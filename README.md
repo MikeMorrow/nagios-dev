@@ -1,2 +1,2 @@
-# vagrant-nagios-dev
-Clean development environment for nagios plugin development.
+# Nagios development environment
+Clean environment for nagios plugin development.
