@@ -1,0 +1,12 @@
+--- dist/version.sh	2013-11-12 12:21:34.000000000 +0900
++++ dist/version.sh.cent7	2016-02-19 06:29:00.507007000 +0900
+@@ -5,6 +5,7 @@
+ MAJ=`awk '/MP_VERSION_MAJOR/ {print $3}' $MPV_PATH`
+ MIN=`awk '/MP_VERSION_MINOR/ {print $3}' $MPV_PATH`
+ PCH=`awk '/MP_VERSION_PATCH/ {print $3}' $MPV_PATH`
+-GIT=`git describe --always`
++#GIT=`git describe --always`
+ 
+-echo $MAJ.$MIN.$PCH-$GIT
++#echo $MAJ.$MIN.$PCH-$GIT
++echo $MAJ.$MIN.$PCH-
