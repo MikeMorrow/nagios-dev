@@ -8,6 +8,7 @@ export modPythonSource=http://dist.modpython.org/dist/mod_python-3.5.0.tgz
 yum install httpd -y
 systemctl start httpd
 systemctl enable httpd
+touch /var/www/html/index.html
 #firewall-cmd --permanent --add-service=http
 #systemctl restart firewalld
 # ---------------------------------------------------------------------------
@@ -29,11 +30,6 @@ systemctl restart httpd
 yum install nagios -y
 echo "vagrant" | htpasswd -i /etc/nagios/passwd nagiosadmin
 systemctl restart nagios
-# ---------------------------------------------------------------------------
-# Install check_mk
-# ---------------------------------------------------------------------------
-yum install check-mk-agent check-mk check-mk-multisite -y
-sed -i "s|/etc/nagios/htpasswd.users|/etc/nagios/passwd|" /etc/httpd/conf.d/zzz_check_mk.conf
 # ---------------------------------------------------------------------------
 # Install nrpe
 # ---------------------------------------------------------------------------
