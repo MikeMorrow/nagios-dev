@@ -8,8 +8,9 @@ Vagrant.configure(2) do |config|
   # ---------------------------------------------------------------------------
   # Global properties
   # ---------------------------------------------------------------------------
-  config.vm.box = "MikeMorrow/centos.7.2"
-
+  #config.vm.box = "MikeMorrow/centos.7.2"
+  config.vm.box  = "ubuntu/trusty64"
+  #config.vm.box  = "ubuntu/vivid64"
   # ---------------------------------------------------------------------------
   # Nagios Server
   # ---------------------------------------------------------------------------
@@ -17,7 +18,7 @@ Vagrant.configure(2) do |config|
     nagiosServer.vm.network :private_network, ip: "192.168.3.2"
     nagiosServer.vm.hostname = 'nagiosServer'
     nagiosServer.vm.provision "shell", path: "scripts/setupEnvironment.sh"
-    nagiosServer.vm.provision "shell", path: "scripts/installNagiosServer.sh"
+    nagiosServer.vm.provision "shell", path: "scripts/installOMD.sh"
   end
   # ---------------------------------------------------------------------------
   # Nagios Client
@@ -26,6 +27,6 @@ Vagrant.configure(2) do |config|
     client.vm.network :private_network, ip: "192.168.3.10"
     client.vm.hostname = 'client'
     client.vm.provision "shell", path: "scripts/setupEnvironment.sh"
-    client.vm.provision "shell", path: "scripts/installNagiosClient.sh"
+    client.vm.provision "shell", path: "scripts/installCheckmkClient.sh"
   end
 end
