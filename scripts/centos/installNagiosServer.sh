@@ -1,7 +1,5 @@
 yum update -y
 yum install epel-release -y
-#
-export modPythonSource=http://dist.modpython.org/dist/mod_python-3.5.0.tgz
 # ---------------------------------------------------------------------------
 # Install httpd
 # ---------------------------------------------------------------------------

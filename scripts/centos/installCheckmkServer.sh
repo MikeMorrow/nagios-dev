@@ -1,6 +1,7 @@
 # It is assumed that installNagiosServer.sh has been run
 export modPythonSource=http://dist.modpython.org/dist/mod_python-3.5.0.tgz
 export checkMKrpm=https://mathias-kettner.de/support/1.2.6p16/check-mk-raw-1.2.6p16-el7-34.x86_64.rpm
+export checkMKsrc=https://mathias-kettner.de/support/1.2.6p16/check-mk-raw-1.2.6p16.cre.tar.gz
 # ---------------------------------------------------------------------------
 # Install httpd with mod_python
 # ---------------------------------------------------------------------------
