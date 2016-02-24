@@ -14,5 +14,5 @@ omd create dev
 su - dev -c "omd start"
 /bin/cp /vagrant/conf/check_mk/main.mk /opt/omd/sites/dev/etc/check_mk
 /etc/init.d/apache2 restart
-cmk -I # inventory - find new services
-cmk -R # precompile + config + core restart
+su - dev -c "cmk -I" # inventory - find new services
+su - dev -c "cmk -R" # precompile + config + core restart
