@@ -31,7 +31,7 @@ if [ ! -e ${vagrantFile} ]; then
 fi
 
 if [ -z "${vagrantMachines}" ]; then
-  vagrantMachines=$(grep "vm.define" ${vagrantFile} | sed -r 's/.*\|(\S+)\|/\1/')
+  vagrantMachines=$(grep "vm.define" ${vagrantFile} | grep -v "^[ ]*#" | sed -r 's/.*\|(\S+)\|/\1/')
 fi
 
 for vagrantMachine in $vagrantMachines; do
