@@ -12,17 +12,6 @@ Vagrant.configure(2) do |config|
   config.vm.box  = "ubuntu/trusty64"
   # config.vm.box  = "ubuntu/vivid64"
   # ---------------------------------------------------------------------------
-  # Nagios Server
-  # ---------------------------------------------------------------------------
-  config.vm.define :nagiosServer do |nagiosServer|
-    nagiosServer.vm.network :private_network, ip: "192.168.3.2"
-    nagiosServer.vm.hostname = 'nagiosServer'
-    nagiosServer.vm.provision "shell", path: "scripts/setupEnvironment.sh"
-    nagiosServer.vm.provision "shell", path: "scripts/ubuntu/installOMD.sh"
-    # nagiosServer.vm.provision "shell", path: "scripts/centos/installNagiosServer.sh"
-    # nagiosServer.vm.provision "shell", path: "scripts/centos/installCheckmkServer.sh"
-  end
-  # ---------------------------------------------------------------------------
   # Nagios Client
   # ---------------------------------------------------------------------------
   config.vm.define :client do |client|
@@ -32,5 +21,16 @@ Vagrant.configure(2) do |config|
     client.vm.provision "shell", path: "scripts/ubuntu/installCheckmkClient.sh"
     # client.vm.provision "shell", path: "scripts/centos/installNagiosClient.sh"
     # client.vm.provision "shell", path: "scripts/centos/installCheckmkClient.sh"
+  end
+  # ---------------------------------------------------------------------------
+  # Nagios Server
+  # ---------------------------------------------------------------------------
+  config.vm.define :nagiosServer do |nagiosServer|
+    nagiosServer.vm.network :private_network, ip: "192.168.3.2"
+    nagiosServer.vm.hostname = 'nagiosServer'
+    nagiosServer.vm.provision "shell", path: "scripts/setupEnvironment.sh"
+    nagiosServer.vm.provision "shell", path: "scripts/ubuntu/installOMD.sh"
+    # nagiosServer.vm.provision "shell", path: "scripts/centos/installNagiosServer.sh"
+    # nagiosServer.vm.provision "shell", path: "scripts/centos/installCheckmkServer.sh"
   end
 end
