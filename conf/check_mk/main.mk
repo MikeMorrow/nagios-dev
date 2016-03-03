@@ -17,5 +17,5 @@ filesystem_default_levels = {
 	"inode_levels"	: ( 10000, 1000000 )
 }
 
-memused_default_levels = ( 10.0, 30.0 )
+memused_default_levels = ( 5.0, 10.0 )
 cpuload_default_levels = ( 0.8, 1.2 )
