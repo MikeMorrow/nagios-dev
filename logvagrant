@@ -13,6 +13,7 @@ EOF
 }
 
 vagrantFile=./Vagrantfile
+logLocation=./.vagrant
 vagrantMachines=""
 while getopts ":f:m:" opt; do
   case $opt in
@@ -25,17 +26,25 @@ while getopts ":f:m:" opt; do
   esac
 done
 
+if [ ! -d ${logLocation} ]; then
+  echo "Log location not found, creating: ${logLocation}"
+  mkdir -p ${logLocation}
+fi
+
 if [ ! -e ${vagrantFile} ]; then
   echo "ERROR: Vagrantfile not found at: ${vagrantFile}"
   usage
 fi
 
 if [ -z "${vagrantMachines}" ]; then
+  # find machine definitions
+  # remove commented out definitions
+  # strip machine definition to get get machine names
   vagrantMachines=$(grep "vm.define" ${vagrantFile} | grep -v "^[ ]*#" | sed -r 's/.*\|(\S+)\|/\1/')
 fi
 
 for vagrantMachine in $vagrantMachines; do
   echo "Starting ${vagrantMachine}..."
-  script -f -c "vagrant up ${vagrantMachine}" ./.vagrant/${vagrantMachine}.log
-  echo "Log stored at ./.vagrant/${vagrantMachine}.log"
+  script -f -c "vagrant up ${vagrantMachine}" ${logLocation}/${vagrantMachine}.log
+  echo "Log stored at ${logLocation}/${vagrantMachine}.log"
 done
