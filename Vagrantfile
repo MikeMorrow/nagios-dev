@@ -15,7 +15,7 @@ Vagrant.configure(2) do |config|
   # Nagios Client
   # ---------------------------------------------------------------------------
   config.vm.define :client do |client|
-    client.vm.network :private_network, ip: "192.168.3.10"
+    client.vm.network :private_network, ip: "192.168.3.22"
     client.vm.hostname = 'client'
     client.vm.provision "shell", path: "scripts/setupEnvironment.sh"
     client.vm.provision "shell", path: "scripts/ubuntu/installCheckmkClient.sh"
@@ -26,7 +26,7 @@ Vagrant.configure(2) do |config|
   # Nagios Server
   # ---------------------------------------------------------------------------
   config.vm.define :nagiosServer do |nagiosServer|
-    nagiosServer.vm.network :private_network, ip: "192.168.3.2"
+    nagiosServer.vm.network :private_network, ip: "192.168.3.21"
     nagiosServer.vm.hostname = 'nagiosServer'
     nagiosServer.vm.provision "shell", path: "scripts/setupEnvironment.sh"
     nagiosServer.vm.provision "shell", path: "scripts/ubuntu/installOMD.sh"
