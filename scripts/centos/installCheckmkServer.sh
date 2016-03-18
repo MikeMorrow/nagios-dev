@@ -5,6 +5,8 @@ yum install epel-release -y
 curl -L -O $checkMKrpm
 yum install --nogpgcheck check-mk-raw-1.2.6p16-el7-34.x86_64.rpm -y
 /usr/sbin/setsebool httpd_can_network_connect 1
+# Copy local test scripts to check_mk local directory
+cp /vagrant/test/local/* /usr/share/check-mk-agent/local
 omd create dev
 #su - dev -c "omd start"
 omd start dev
