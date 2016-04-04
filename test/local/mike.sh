@@ -1,6 +1,5 @@
 #!/bin/bash
 checkLocation=$(dirname $(readlink -f $0))
-echo
 if [ -e ${checkLocation}/flap ]; then
   value=$(($(date +%s) % 600 ))
 else
