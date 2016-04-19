@@ -33,5 +33,19 @@ Vagrant.configure(2) do |config|
     nagiosServer.vm.provision "shell", path: "scripts/centos/installNagiosServer.sh"
     nagiosServer.vm.provision "shell", path: "scripts/centos/installCheckmkClient.sh"
     nagiosServer.vm.provision "shell", path: "scripts/centos/installCheckmkServer.sh"
+    nagiosServer.vm.provision "shell", path: "scripts/centos/installCheckmkLivestatus.sh"
   end
+  # ---------------------------------------------------------------------------
+  # Central Server
+  # ---------------------------------------------------------------------------
+  config.vm.define :centralServer do |centralServer|
+    centralServer.vm.network :private_network, ip: "192.168.3.20"
+    centralServer.vm.hostname = 'centralServer'
+    centralServer.vm.provision "shell", path: "scripts/setupEnvironment.sh"
+    # centralServer.vm.provision "shell", path: "scripts/ubuntu/installOMD.sh"
+    centralServer.vm.provision "shell", path: "scripts/centos/installCentralServer.sh"
+    centralServer.vm.provision "shell", path: "scripts/centos/installCheckmkClient.sh"
+    centralServer.vm.provision "shell", path: "scripts/centos/installCheckmkCentral.sh"
+  end
+
 end
